@@ -9,17 +9,20 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ike.saylovedemo.adapter.MyPagerAdapter;
 import com.ike.saylovedemo.heartView.HeartView;
 import com.ike.saylovedemo.heartView.ZoomOutPageTransformer;
+import com.ike.saylovedemo.widget.LoveLayout;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.view.ViewPropertyAnimator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     private String Tag="MainActivity";
@@ -28,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout ll_parent;
     private HeartView heart_view;
     private ViewPager vp;
+    private Button btn_love;
+    private LoveLayout love_layout;
     private List<Integer> mData=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +43,13 @@ public class MainActivity extends AppCompatActivity {
         ll_parent= (LinearLayout) findViewById(R.id.ll_parent);
         heart_view= (HeartView) findViewById(R.id.heart_view);
         vp= (ViewPager) findViewById(R.id.vp);
+        btn_love= (Button) findViewById(R.id.btn_love);
+        love_layout= (LoveLayout) findViewById(R.id.love_layout);
         vp.setPageTransformer(true,new ZoomOutPageTransformer());
         initListener();
         initData();
 
     }
-
     private void initData() {
         for (int i=0;i<10;i++){
             mData.add(R.drawable.ic_launcher);
@@ -56,6 +62,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 backAnimation();
+            }
+        });
+        btn_love.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int nextInt = new Random().nextInt(3);
+                love_layout.addViewToLayout(nextInt);
             }
         });
     }

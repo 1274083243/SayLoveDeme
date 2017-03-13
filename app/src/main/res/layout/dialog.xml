@@ -49,9 +49,23 @@
         android:layout_height="40dp" />
 
     </LinearLayout>
-    <ImageView
-        android:background="@drawable/ic_launcher"
+   <com.ike.saylovedemo.widget.LoveLayout
+       android:id="@+id/love_layout"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"/>
+    <com.ike.saylovedemo.widget.DynamicWave
         android:layout_centerInParent="true"
-        android:layout_width="100dp"
-        android:layout_height="100dp" />
+        android:visibility="gone"
+        android:layout_width="180dp"
+        android:layout_height="180dp" />
+
+    <Button
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/btn_love"
+        android:text="心型冒泡"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp" />
 </RelativeLayout>
